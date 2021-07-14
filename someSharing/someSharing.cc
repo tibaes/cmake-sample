@@ -1,10 +1,12 @@
 #include "someSharing.hh"
+#include "someHiddenStatic.hh"
 #include <iostream>
 
 using namespace std;
 
 struct someSharing::Hidden {
     string message;
+    someHiddenStatic truth;
 };
 
 someSharing::someSharing(/* args */)
@@ -22,4 +24,8 @@ someSharing::~someSharing()
 
 void someSharing::whisper() {
     cout << "> I've heard " << secrets->message << " Don't tell anyone, ok?" << endl;
+}
+
+void someSharing::reveal() {
+    secrets->truth.reveal();
 }

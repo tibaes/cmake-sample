@@ -1,4 +1,3 @@
-#include <iostream>
 #include <memory>
 
 class someSharing
@@ -10,4 +9,5 @@ public:
     someSharing(/* args */);
     ~someSharing();
     void whisper();
+    void reveal();
 };
