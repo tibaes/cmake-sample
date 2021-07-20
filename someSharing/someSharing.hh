@@ -1,6 +1,7 @@
 #include <memory>
+#include "someSharing_export.h"
 
-class someSharing
+class SOMESHARING_EXPORT someSharing
 {
 private:
     struct Hidden;

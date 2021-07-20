@@ -17,6 +17,10 @@ set_target_properties(someSharing PROPERTIES
     PUBLIC_HEADER someSharing.hh
 )
 target_link_libraries(someSharing PRIVATE someHiddenStatic)
+include(GenerateExportHeader)
+generate_export_header(someSharing EXPORT_FILE_NAME ${CMAKE_BINARY_DIR}/exports/someSharing_export.h)
+target_include_directories(someSharing PUBLIC ${CMAKE_BINARY_DIR}/exports)
+target_link_libraries(someSharing PRIVATE ${CMAKE_DL_LIBS})
 
 
 add_executable(testSharing test.cc)
@@ -39,6 +43,10 @@ install(
 install(TARGETS someSharing
   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
   PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+)
+install(
+  FILES ${CMAKE_BINARY_DIR}/exports/someSharing_export.h
+  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 )
 
 install(TARGETS testSharing

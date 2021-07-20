@@ -1,11 +1,11 @@
 #!/bin/bash
 
-mkdir someSharing/{build,install}
+mkdir -p someSharing/build/install
 
 cd someSharing/build
 
 cmake .. -G "Ninja"  \
-    -DCMAKE_INSTALL_PREFIX="../install" \
+    -DCMAKE_INSTALL_PREFIX="./install" \
     -DCMAKE_BUILD_TYPE="Release"
 
 ninja
